@@ -1,0 +1,50 @@
+<nav class="navbar navbar-default" role="navigation">
+  <a class="navbar-brand">Listing glasses</a>
+
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav">
+      <li>
+        <%= link_to 'New Glass', new_glass_path %>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <button type="button" class="btn btn-default navbar-btn"><%= link_to "Sign out", destroy_user_session_path,  method: :delete%></button>
+      </li>
+    </ul>
+  </div>
+
+</nav>
+
+<table class="table">
+  <tr>
+    <th>Title</th>
+    <th>Company</th>
+    <th>Description</th>
+    <th>Price</th>
+    <th>Factor</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @glasses.each do |glass| %>
+  <tr>
+    <td><%= glass.title %></td>
+    <td><%= glass.company %></td>
+    <td><%= glass.description %></td>
+    <td><%= glass.price %></td>
+    <td><%= glass.factor %></td>
+    <td>
+      <div class="btn-group">
+          <button type="button" class="btn btn-info"><%= link_to 'Show', glass %></button>
+          <button type="button" class="btn btn-warning"><%= link_to 'Edit', edit_glass_path(glass) %></button>
+          <button type="button" class="btn btn-danger"><%= link_to 'Destroy', glass, method: :delete, data: { confirm: 'Are you sure?' } %></button>
+      </div>
+    </td>
+  </tr>
+<% end %>
+</table>
+
+
+<br />
